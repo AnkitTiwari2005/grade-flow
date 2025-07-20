@@ -717,14 +717,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-light);
             width: 100%;
-            /* ADDED: Consistent bottom margin for all feature cards */
-            margin-bottom: 20px;
         }
-
-        /* REMOVED: Last child margin override */
-        /* .feature-card:last-child {
-            margin-bottom: 0;
-        } */
 
         body.dark-mode .feature-card {
             background: var(--card-dark);
@@ -1061,37 +1054,18 @@
                 padding: 15px;
             }
             header {
-                flex-direction: row; /* Keep as row for compact layout */
+                flex-direction: column; /* Stack logo and toggle */
                 align-items: center;
                 gap: 15px;
-                margin-bottom: 15px; /* Reduced margin */
-                padding: 10px 0; /* Reduced vertical padding */
+                margin-bottom: 20px;
             }
             .logo {
-                flex-direction: row; /* Keep horizontal */
-                gap: 8px; /* Reduced gap */
+                flex-direction: column;
+                gap: 5px;
             }
             .logo-text {
-                font-size: 22px; /* Slightly reduced font size */
+                font-size: 22px; /* Smaller logo text on mobile */
                 text-align: center;
-            }
-            .logo-icon {
-                width: 40px; /* Reduced size */
-                height: 40px;
-                font-size: 20px; /* Reduced icon size */
-            }
-            .theme-toggle {
-                width: 50px; /* Reduced width */
-                height: 25px; /* Reduced height */
-            }
-            .theme-toggle::before {
-                width: 21px; /* Adjusted knob size */
-                height: 21px;
-                top: 2px;
-                left: 3px;
-            }
-            body.dark-mode .theme-toggle::before {
-                left: 26px; /* Adjusted position for dark mode */
             }
             .card {
                 padding: 15px; /* Reduced card padding for mobile */
@@ -1133,10 +1107,7 @@
                 text-align: center;
                 gap: 10px;
                 padding: 15px;
-                /* Consistent margin for all feature cards */
-                margin-bottom: 20px;
             }
-            /* Removed :last-child override for consistent spacing */
             .feature-icon {
                 margin-bottom: 5px;
             }
@@ -1194,12 +1165,12 @@
         /* Even smaller adjustments for extremely narrow phones (e.g., iPhone SE) */
         @media (max-width: 400px) {
             .logo-text {
-                font-size: 18px; /* Further adjust logo text size */
+                font-size: 20px; /* Further adjust logo text size */
             }
             .logo-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
             .theme-toggle {
                 width: 45px;
@@ -2123,12 +2094,6 @@
 
         // Reset SGPA Data
         resetBtn.addEventListener('click', () => {
-            // Scroll to top before showing confirmation
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
             showCustomConfirm('Are you sure you want to clear all current semester subjects?', (confirmed) => {
                 if (confirmed) {
                     subjects = [];
@@ -2433,12 +2398,6 @@ addSemesterBtn.addEventListener('click', () => {
 });
 
 resetCgpaBtn.addEventListener('click', () => {
-    // Scroll to top before showing confirmation
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-    
     showCustomConfirm('Are you sure you want to clear all previous semester data for CGPA?', (confirmed) => {
         if (confirmed) {
             semesters = [];
